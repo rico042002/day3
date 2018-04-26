@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tourist Attraction</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+	<h1></h1>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">BALI</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="https://en.wikipedia.org/wiki/Bali" target="_blank">About <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://www.bali-indonesia.com/tours/sightseeing-attractions-tours.htm" target="_blank">Attractions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="http://www.bali-indonesia.com/" target="_blank">Pricing</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">More Pictures</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="templeIndex.html">Temples</a>
+          <a class="dropdown-item" href="cultureIndex.html">Local Culture</a>
+          <a class="dropdown-item" href="https://www.tripadvisor.com/Travel-g294226-c112528/Bali:Indonesia:Best.Beaches.html">Beaches</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+	<div class="gallery">
+  <div class="img-w">
+    <img src="img/9.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/1.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/2.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/3.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/4.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/5.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/6.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/7.jpg" alt="" /></div>
+  <div class="img-w"><img src="img/8.jpg" alt="" /></div>
+</div>
+<script type="text/javascript">
+		$(function() {
+  $(".img-w").each(function() {
+    $(this).wrap("<div class='img-c'></div>")
+    let imgSrc = $(this).find("img").attr("src");
+     $(this).css('background-image', 'url(' + imgSrc + ')');
+  })
+            
+  
+  $(".img-c").click(function() {
+    let w = $(this).outerWidth()
+    let h = $(this).outerHeight()
+    let x = $(this).offset().left
+    let y = $(this).offset().top
+    
+    
+    $(".active").not($(this)).remove()
+    let copy = $(this).clone();
+    copy.insertAfter($(this)).height(h).width(w).delay(500).addClass("active")
+    $(".active").css('top', y - 8);
+    $(".active").css('left', x - 8);
+    
+      setTimeout(function() {
+    copy.addClass("positioned")
+  }, 0)
+    
+  }) 
+  
+  
+
+  
+})
+
+$(document).on("click", ".img-c.active", function() {
+  let copy = $(this)
+  copy.removeClass("positioned active").addClass("postactive")
+  setTimeout(function() {
+    copy.remove();
+  }, 500)
+})
+	</script>
+	<!--Gallery created by @wunnie https://codepen.io/wunnle/pen/ZLomgG, all picture credits go to: wikipedia.org, unsplash.com, and pexelbay-->
+</body>
+</html>
